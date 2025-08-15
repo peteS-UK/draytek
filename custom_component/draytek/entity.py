@@ -30,7 +30,7 @@ class DraytekSensorEntity(CoordinatorEntity[DraytekDataUpdateCoordinator]):
         self._attr_unique_id = f"{description.key}"
         self._attr_name = f"{name} {description.display_name}"
 
-        _LOGGER.critical("uuid %s", coordinator.uuid)
+        _LOGGER.debug("uuid %s", coordinator.uuid)
 
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, coordinator.uuid)},

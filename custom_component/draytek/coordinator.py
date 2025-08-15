@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from asyncio import timeout
+
 
 # from . import DraytekConfigEntry
 from dataclasses import dataclass
@@ -20,7 +20,6 @@ from pysnmp.hlapi.asyncio import (
     CommunityData,
     Udp6TransportTarget,
     UdpTransportTarget,
-    UsmUserData,
     getCmd,
 )
 from pysnmp.proto.rfc1902 import Opaque
@@ -110,12 +109,10 @@ class DraytekDataUpdateCoordinator(DataUpdateCoordinator):
             result = await self.async_get_snmp_value(oid)
             data[key] = result
 
-        _LOGGER.critical("result %s", data)
-
         if not data:
             raise UpdateFailed("No data from status poll")
 
-        _LOGGER.debug("Raw SNMP Data %s", data)
+        _LOGGER.debug("SNMP Data %s", data)
 
         return data
 

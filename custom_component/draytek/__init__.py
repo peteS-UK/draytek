@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from asyncio import timeout
 from dataclasses import dataclass
 
 from homeassistant.config_entries import ConfigEntry
@@ -52,5 +51,5 @@ async def async_unload_entry(
     hass: HomeAssistant, config_entry: DraytekConfigEntry
 ) -> bool:
     """Unload a config entry."""
-    config_entry.runtime_data.coordinator.snmpEngine.close_dispatcher()
+    # config_entry.runtime_data.coordinator.snmpEngine.close_dispatcher()
     return await hass.config_entries.async_unload_platforms(config_entry, _PLATFORMS)

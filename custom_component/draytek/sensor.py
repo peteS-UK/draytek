@@ -30,6 +30,12 @@ SENSORS: tuple[DraytekSensorDescription, ...] = [
         display_name="System Up Time",
         baseoid=OID["sysUpTime"],
     ),
+    DraytekSensorDescription(
+        key="system",
+        # state_class=SensorStateClass.MEASUREMENT,
+        display_name="System",
+        baseoid=OID["system"],
+    ),
 ]
 
 
